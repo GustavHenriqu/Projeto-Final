@@ -1,29 +1,29 @@
-        // Função para formatar o CPF automaticamente
+ 
         function formatarCPF(cpf) {
-            cpf = cpf.replace(/\D/g, ""); // Remove tudo que não for número
-            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // Adiciona o primeiro ponto
-            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); // Adiciona o segundo ponto
-            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2"); // Adiciona o traço
+            cpf = cpf.replace(/\D/g, "");
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2");
+            cpf = cpf.replace(/(\d{3})(\d)/, "$1.$2"); 
+            cpf = cpf.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
             return cpf;
         }
 
-        // Aplica a formatação enquanto o usuário digita no campo CPF
+      
         document.getElementById("cpf-input").addEventListener("input", function () {
             this.value = formatarCPF(this.value);
         });
 
         document.getElementById('form').addEventListener('submit', function(event) {
 
-            // Pegando valores
+        
             const nome = document.getElementById('name-input').value.trim();
             const email = document.getElementById('email-input').value.trim();
             const dataNascimento = document.getElementById('date-input').value.trim();
-            const cpf = document.getElementById('cpf-input').value.replace(/\D/g, ""); // Remove formatação do CPF
+            const cpf = document.getElementById('cpf-input').value.replace(/\D/g, ""); 
             const telefone = document.getElementById('tel-input').value.trim();
             const senha = document.getElementById('pass-input').value.trim();
             const confirmarSenha = document.getElementById('confirm-pass').value.trim();
         
-            // Parágrafos de erro
+ 
             const erroNome = document.getElementById('name-error');
             const erroEmail = document.getElementById('email-error');
             const erroDataNascimento = document.getElementById('date-error');
@@ -31,8 +31,9 @@
             const erroTelefone = document.getElementById('tel-error');
             const erroSenha = document.getElementById('pass-error');
             const erroConfirmarSenha = document.getElementById('confirm-error');
+
+            const telefoneValue = telefone.replace(/\D/g, '');
         
-            // Limpando mensagens anteriores
             erroNome.textContent = "";
             erroEmail.textContent = "";
             erroDataNascimento.textContent = "";
@@ -42,8 +43,11 @@
             erroConfirmarSenha.textContent = "";
         
             let formularioValido = true;
+
+      
+            
         
-            // Validação de Campos Vazios
+ 
             if (!nome) {
                 erroNome.textContent = "O campo nome não pode estar vazio.";
                 formularioValido = false;
@@ -73,7 +77,7 @@
                 formularioValido = false;
             }
         
-            // Validações Específicas
+           
             if (nome && (nome.length < 5 || nome.length > 50)) {
                 erroNome.textContent = "O nome deve ter entre 5 e 50 caracteres.";
                 formularioValido = false;
@@ -85,16 +89,16 @@
             }
         
             if (cpf && !/^\d{11}$/.test(cpf)) {
-                erroCPF.textContent = "O CPF deve conter exatamente 11 dígitos.";
+                erroCPF.textContent = "Insira um CPF válido.";
                 formularioValido = false;
             }
         
-            if (telefone && !/^\d{11}$/.test(telefone)) {
-                erroTelefone.textContent = "O telefone deve conter exatamente 11 dígitos.";
+            if (!(telefoneValue.length == 13) ) {
+                erroTelefone.textContent = "Insira um telefone válido";
                 formularioValido = false;
             }
         
-            // Validação da Data de Nascimento
+     
             if (dataNascimento) {
                 const dataNascimentoObj = new Date(dataNascimento);
                 const hoje = new Date();
@@ -113,7 +117,7 @@
                     (idade === 18 && mesCorrecao < 0) || 
                     (idade === 18 && mesCorrecao === 0 && hoje.getDate() < dataNascimentoObj.getDate())
                 ) {
-                    erroDataNascimento.textContent = "Você precisa ter mais de 18 anos.";
+                    erroDataNascimento.textContent = "É necessário ter mais de 18 anos para criar uma conta.";
                     formularioValido = false;
                 }
             }
@@ -128,14 +132,12 @@
                 formularioValido = false;
             }
         
-            // Se o formulário estiver válido, podemos enviar os dados
+          
             if (!formularioValido) {
-                event.preventDefault();  // Impede o envio do formulário
-                console.log("Existem erros no formulário. O envio foi bloqueado.");
+                event.preventDefault();  
+              
             } else {
-                console.log("Todos os dados estão válidos. O formulário será enviado.");
-                // Aqui o envio do formulário seria realizado automaticamente
-                // O envio será feito pelo próprio formulário quando o preventDefault() não for chamado
+  
             }
         
         });

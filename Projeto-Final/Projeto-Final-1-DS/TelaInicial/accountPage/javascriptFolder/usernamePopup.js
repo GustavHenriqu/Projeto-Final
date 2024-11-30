@@ -12,6 +12,7 @@ userButton.addEventListener("click", function () {
     setTimeout(() => {
         popup.classList.toggle("open")
         site.classList.toggle("blur");
+        headerContainer.classList.toggle("blur");
   
     }, 10);
 
@@ -20,7 +21,9 @@ userButton.addEventListener("click", function () {
 saveButton.addEventListener("click", function() {
     popup.classList.remove("open");
     siteContainer.classList.remove("blur");
+    headerContainer.classList.remove("blur");
     usernameLabel.textContent = usernameInput.value;
+    
 
     setTimeout(() => {
        popup.style.display = "none";

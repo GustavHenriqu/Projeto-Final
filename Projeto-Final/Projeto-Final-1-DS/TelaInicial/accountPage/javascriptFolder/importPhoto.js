@@ -23,7 +23,7 @@ file.addEventListener('change', function() {
 
 deleteButton.addEventListener("click", function() {
     img.forEach(currentImg => {   
-         currentImg.src = "./images/defaultAccount.png";
+         currentImg.src = "../Imagens/iconeConta.png";
 
     })
 })

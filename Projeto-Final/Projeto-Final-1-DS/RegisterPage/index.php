@@ -95,7 +95,8 @@ $_SESSION['telefone'] = $_POST['telefone'];
                         </div>
 
                         <div class="input-group">
-                            <input type="number" name="telefone" id="tel-input" placeholder="Telefone" >
+                            <input type="text" name="telefone" id="tel-input" placeholder="Telefone" onfocus="adicionarPrefixo(this)" 
+                            oninput="formatarTelefone(this)">
 
                             <p class="error-text" id="cpf-error"></p>
                             <p class="error-text" id="tel-error"></p>
@@ -166,6 +167,7 @@ $_SESSION['telefone'] = $_POST['telefone'];
     
     <script src="./javascriptFolder/termos.js"></script>
     <script src="./javascriptFolder/formatCpf.js"></script>
+    <script src="./javascriptFolder/formatTelefone.js"></script>
 </body>
 
 </html>

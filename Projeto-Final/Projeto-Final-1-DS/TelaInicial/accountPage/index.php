@@ -43,6 +43,77 @@ $telefone = $_SESSION['telefone'];
           </div>       
         </nav>
 
+        <div class="accout-profile">
+            <div class="top-account">
+                <img class="account-img " src="https://www.pellarin.com.br/wp-content/uploads/2022/08/artigoBannerMobile767x716_homem-com-papada-como-eliminar.jpg">
+                <div>
+                <?php
+                    echo '<p class="email-text underline">' .($nome) . '</p>';
+                    ?>
+                    <?php
+                    echo '<p class="email-text underline">' .($email) . '</p>';
+                    ?>
+                </div>
+             
+                
+            </div>
+            <div class="manage-container">
+              
+                    <a href="../accountPage/index.php" class="manage-button">
+                        <img src="../Imagens/profile.png">
+                        <p>Editar Perfil</p>
+                        <span>></span>
+                    </a>
+
+                    
+                    <a href="#" class="manage-button">
+                        <img src="../Imagens/setting.png">
+                        <p>Configurações</p>
+                        <span>></span>
+                    </a>
+
+                    <a href="#" class="manage-button">
+                      <img src="../Imagens/saldoIcon.png">
+                      <p>Meu saldo</p>
+                      <span>></span>
+                  </a>
+
+                  <a href="#" class="manage-button">
+                      <img src="../Imagens/depositarIcon.png">
+                      <p>Depositar</p>
+                      <span>></span>
+                  </a>
+        
+                  <a href="#" class="manage-button">
+                      <img src="../Imagens/sacarIcon.png">
+                      <p>Sacar</p>
+                      <span>></span>
+                  </a>
+
+        
+                    <a href="#" class="manage-button">
+                        <img src="../Imagens/help.png">
+                        <p>Ajuda e Suporte</p>
+                        <span>></span>
+                    </a>
+                    
+                    
+                    <a href="#" class="manage-button">
+                        <img id="logout-img" src="../Imagens/logout.png">
+                        <p>Sair</p>
+                        <span>></span>
+                    </a>
+              
+               
+              
+              
+               
+                </div>
+            </div>
+
+        
+    </div>
+
       </header>
     
     <main class="site-container">
@@ -245,22 +316,22 @@ $telefone = $_SESSION['telefone'];
             <div class="inputs-container">
                 
             <div class="input-bo">
-                <input type="text" placeholder="Senha Atual">
-                <img src="https://jonbet.com/static/media/eye.fdf3ae46.svg">
+                <input type="password" placeholder="Senha Atual">
+                <img src="../../LoginPage/imagens/open-eyes.png">
             </div>
     
             
             <div class="input-bo">
-                <input type="text" placeholder="Nova Senha">
-                <img src="https://jonbet.com/static/media/eye.fdf3ae46.svg">
+                <input type="password" placeholder="Nova Senha">
+                <img src="../../LoginPage/imagens/open-eyes.png">
             </div>
     
             <div class="input-bo">
-                <input type="text" placeholder="Repita a Nova Senha">
-                <img src="https://jonbet.com/static/media/eye.fdf3ae46.svg">
+                <input type="password" placeholder="Repita a Nova Senha">
+                <img src="../../LoginPage/imagens/open-eyes.png">
             </div>
     
-            <button class="button">Salvar</button>
+            <button class="button" id="pass-close">Salvar</button>
     
     
         </div>
@@ -300,8 +371,17 @@ $telefone = $_SESSION['telefone'];
             <div class="inputs-container">
                 
             <div class="input-bo">
-                <input type="text" id="tel-input" placeholder="Digite seu número junto com o código DDD">
+
+                <input 
+                type="text" 
+                id="tel-input" 
+                placeholder="Digite seu número junto com o código DDD" 
+                onfocus="adicionarPrefixo(this)" 
+                oninput="formatarTelefone(this)">
+
             </div>
+
+            <p id="tel-error-text"></p>
 
             
     
@@ -325,6 +405,8 @@ $telefone = $_SESSION['telefone'];
     <script src="./javascriptFolder/telPopup.js"></script>
     <script src="./javascriptFolder/importPhoto.js"></script>
     <script src="./javascriptFolder/lateralMenu.js"></script>
+    <script src="./javascriptFolder/openProfile.js"></script>
+    <script src="./javascriptFolder/formatTelefone.js"></script>
  
 </body>
 </html>
